@@ -36,5 +36,15 @@ class ArticleScraper():
 		print(sentence_list)
 		return sentence_list
 
+	def check_sentences(self, sentence_list):
+		new_sentence_list = []
+		for sentence in sentence_list:
+			if len(sentence) < 3:
+				new_sentence_list[len(new_sentence_list)-1].extend(sentence)
+			new_sentence_list.append(sentence)
+		return new_sentence_list
+
 	def scrape(self):
-		return split_by_sentences(return_page_content())
+		return check_sentences(split_by_sentences(return_page_content()))
+
+
